@@ -1,0 +1,17 @@
+rotation.s:	\
+	/Users/ethansmith/basilisk/src/grid/cartesian.h \
+	/Users/ethansmith/basilisk/src/advection.h \
+	/Users/ethansmith/basilisk/src/run.h \
+	/Users/ethansmith/basilisk/src/timestep.h \
+	/Users/ethansmith/basilisk/src/tracer.h \
+	/Users/ethansmith/basilisk/src/bcg.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	/Users/ethansmith/basilisk/src/grid/neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/events.h \
+	/Users/ethansmith/basilisk/src/grid/fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

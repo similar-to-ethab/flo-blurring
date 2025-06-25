@@ -1,0 +1,16 @@
+/Users/ethansmith/basilisk/src/grid/cartesian-common.h:911:7: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+  int len = 0;
+      ^
+/Users/ethansmith/basilisk/src/multilayer.h:206:15: warning: variable 'sumjl' set but not used [-Wunused-but-set-variable]
+    double    sumjl = 0.;
+              ^
+geometry.c:26:8: warning: unused variable 'center' [-Wunused-variable]
+ coord center = {0.5,0.5};
+       ^
+geometry.c:27:9: warning: unused variable 'x_size' [-Wunused-variable]
+ double x_size = 1;
+        ^
+geometry.c:28:9: warning: unused variable 'y_size' [-Wunused-variable]
+ double y_size = 1;
+        ^
+5 warnings generated.

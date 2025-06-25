@@ -1,0 +1,7 @@
+/Users/ethansmith/basilisk/src/grid/cartesian-common.h:911:7: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+  int len = 0;
+      ^
+blur.c:166:9: warning: unused variable 'right_edge_end' [-Wunused-variable]
+ double right_edge_end = H/2;
+        ^
+2 warnings generated.

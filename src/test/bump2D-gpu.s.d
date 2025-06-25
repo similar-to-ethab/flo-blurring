@@ -1,0 +1,23 @@
+bump2D-gpu.s:	\
+	/Users/ethansmith/basilisk/src/grid/gpu/cartesian.h \
+	/Users/ethansmith/basilisk/src/saint-venant.h \
+	/Users/ethansmith/basilisk/src/multilayer.h \
+	/Users/ethansmith/basilisk/src/predictor-corrector.h \
+	/Users/ethansmith/basilisk/src/riemann.h \
+	/Users/ethansmith/basilisk/src/elevation.h \
+	/Users/ethansmith/basilisk/src/gauges.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../cartesian.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/gpu.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/grid.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/reduction.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../events.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../cartesian-common.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

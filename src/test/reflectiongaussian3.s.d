@@ -1,0 +1,28 @@
+reflectiongaussian3.s:	\
+	/Users/ethansmith/basilisk/src/grid/multigrid1D.h \
+	/Users/ethansmith/basilisk/src/compressible/two-phase.h \
+	/Users/ethansmith/basilisk/src/compressible/Mie-Gruneisen.h \
+	/Users/ethansmith/basilisk/src/all-mach.h \
+	/Users/ethansmith/basilisk/src/vof.h \
+	/Users/ethansmith/basilisk/src/fractions.h \
+	/Users/ethansmith/basilisk/src/geometry.h \
+	/Users/ethansmith/basilisk/src/myc2d.h \
+	/Users/ethansmith/basilisk/src/myc.h \
+	/Users/ethansmith/basilisk/src/run.h \
+	/Users/ethansmith/basilisk/src/timestep.h \
+	/Users/ethansmith/basilisk/src/viscosity.h \
+	/Users/ethansmith/basilisk/src/poisson.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid.h \
+	/Users/ethansmith/basilisk/src/grid/foreach_cell.h \
+	/Users/ethansmith/basilisk/src/grid/neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid-common.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid-mpi.h \
+	/Users/ethansmith/basilisk/src/grid/cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/events.h \
+	/Users/ethansmith/basilisk/src/grid/fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

@@ -1,0 +1,30 @@
+spheres.c.tags:	\
+	/Users/ethansmith/basilisk/src/grid/multigrid3D.h \
+	./embed.h \
+	/Users/ethansmith/basilisk/src/navier-stokes/centered.h \
+	/Users/ethansmith/basilisk/src/run.h \
+	/Users/ethansmith/basilisk/src/timestep.h \
+	/Users/ethansmith/basilisk/src/bcg.h \
+	/Users/ethansmith/basilisk/src/viscosity-embed.h \
+	/Users/ethansmith/basilisk/src/viscosity.h \
+	/Users/ethansmith/basilisk/src/poisson.h \
+	/Users/ethansmith/basilisk/src/poisson.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	./fractions.h \
+	./embed-tree.h \
+	./geometry.h \
+	./myc2d.h \
+	./myc.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid.h \
+	/Users/ethansmith/basilisk/src/grid/foreach_cell.h \
+	/Users/ethansmith/basilisk/src/grid/neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid-common.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid-mpi.h \
+	/Users/ethansmith/basilisk/src/grid/cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/events.h \
+	/Users/ethansmith/basilisk/src/grid/fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

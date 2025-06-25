@@ -1,0 +1,36 @@
+view.c.tags:	\
+	./fractions.h \
+	/Users/ethansmith/basilisk/src/view.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/input.h \
+	/Users/ethansmith/basilisk/src/vertexbuffer.h \
+	/Users/ethansmith/basilisk/src/draw.h \
+	/Users/ethansmith/basilisk/src/parse.h \
+	/Users/ethansmith/basilisk/src/draw_get.h \
+	/Users/ethansmith/basilisk/src/fractions.h \
+	/Users/ethansmith/basilisk/src/gl/font.h \
+	/Users/ethansmith/basilisk/src/draw_json.h \
+	/Users/ethansmith/basilisk/src/gl/og_font.h \
+	/Users/ethansmith/basilisk/src/gl/tinygl.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	./geometry.h \
+	./myc2d.h \
+	./myc.h \
+	./grid/quadtree.h \
+	./grid/tree.h \
+	./grid/mempool.h \
+	./grid/memindex/range.h \
+	./grid/foreach_cell.h \
+	./grid/neighbors.h \
+	./grid/tree-common.h \
+	./grid/tree-mpi.h \
+	./grid/balance.h \
+	./grid/multigrid-common.h \
+	./grid/cartesian-common.h \
+	./grid/events.h \
+	./grid/fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

@@ -1,0 +1,10 @@
+/Users/ethansmith/basilisk/src/grid/cartesian-common.h:911:7: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+  int len = 0;
+      ^
+karman.c:52:8: warning: unused variable 'top_right' [-Wunused-variable]
+ coord top_right = {7.5,4};
+       ^
+karman.c:55:8: warning: unused variable 'bot_right' [-Wunused-variable]
+ coord bot_right = {7.5,-4};
+       ^
+3 warnings generated.

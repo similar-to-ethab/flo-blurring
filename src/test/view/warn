@@ -1,0 +1,6 @@
+./../../grid/tree.h:1634: warning: 'Point point' is obsolete, use 'foreach_point/region' instead
+./../../grid/tree.h:1658: warning: 'Point point' is obsolete, use 'foreach_point/region' instead
+./../../grid/cartesian-common.h:911:7: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+  int len = 0;
+      ^
+1 warning generated.

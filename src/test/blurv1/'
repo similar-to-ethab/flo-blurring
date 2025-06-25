@@ -1,0 +1,313 @@
+#include "embed.h"
+#include "navier-stokes/centered.h"
+#include "two-phase.h"
+#include "tension.h"
+#include "./contact-embed.h"
+#include "view.h"
+
+#define LEVEL 7
+#define RHOR 80
+
+double s = 3; //scale
+int num = 0; //video file 1 so its not annoying as fuck
+int j, k = 0;
+double uemax = 0.5;
+double t_end = 1 [0,1];
+
+const double H = 1 [1];  // gas nozzle
+const double R = H*3;  // liquid inlet
+const double RHO1 = 1;
+const double SIGMA = 1.;
+
+double MUl[4] = {2.e-2, 5.e-3, 5.e-3, 5.e-3};
+double MUg[4] = {1.e-1, 2.5e-2, 2.5e-2, 2.5e-2};
+double Ul[4] = {2, 2, 1, 0.5};
+double Ug[4] = {40, 160, 160, 160};
+double theta0[3] = {70, 30, 90};
+
+u.n[left] = dirichlet (fabs(y) < H? Ul[j]:0);
+
+u.t[left] = dirichlet (1);
+p[left] = neumann (0);
+pf[left] = neumann (0);
+
+u.n[right] = neumann (0);
+p[right] = dirichlet (0);
+pf[right] = dirichlet (0);
+
+u.n[top] = dirichlet (x > 0 && x <= H? -Ug[j]:0);
+u.t[top] = dirichlet (0);
+p[top] = neumann (0);
+pf[top] = neumann (0);
+
+u.n[bottom] = dirichlet (x > 0 && x <= H? Ug[j]:0);
+u.t[top] = dirichlet (0);
+p[bottom] = neumann (0);
+pf[bottom] = neumann (0);
+
+u.n[embed] = dirichlet(0.);
+u.t[embed] = dirichlet(0.);
+
+double rectangle (double x, double  y, coord center, double w, double h) {
+	double Px_Plus = x - w/2. - center.x;
+	double Px_Minus = x + w/2. - center.x;
+	double Px = max (Px_Plus, -Px_Minus);
+	double Py_Plus = y  - h/2. - center.y;
+	double Py_Minus = y + h/2. - center.y;
+	double Py = max (Py_Plus, -Py_Minus);
+
+	return max (Px, Py);
+}
+
+double triangle(double x, double y, coord corner, double h, int m) {
+	// return 1 for fluid
+	// return -1 for solid
+
+	if (m == 1) { // if slope is +1
+		if (((x >  corner.x - h) && (x < corner.x ))) { // sets the x bounds
+			if (y > corner.y) {				// sets the y bounds
+				if ((y - corner.y - h) < (x -  corner.x)) { // sets the diagonal bounds
+					return -1;
+				}
+			}
+		}
+	}
+	else if (m == -1) {
+		if ((x > corner.x - h) && (x < corner.x) ) {  	// sets the x bounds
+			if (y < corner.y) { 		// signs are flipped bc i want to get the top instead of the bottom
+				if ((y - corner.y + h) > (-x + corner.x)) {	// sets the y bounds
+					return -1;
+				}
+			}
+		}
+	}
+	return 1; 		// everything else is a fluid
+}
+
+
+
+double geometry (double x, double y) {
+	double center_diameter = R/s;
+
+	coord center = {0.25,0};
+
+	coord left_side = {center.x - 5*H, 0};
+	coord left_middle = {(center.x + left_side.x)/2, 0};
+
+	coord up_middle = {left_side.x, center_diameter + H/2};
+	coord bot_middle = {left_side.x, - (center_diameter + H/2)};
+
+	//return triangle (x,y, center, 1, 1);
+	//return min(triangle (x,y,center,1,-1), rectangle (x,y,center, 0.5,0.5));
+
+
+	double right_box = (x > 0.25) ? 1 : -1; 								// if x is greater than 0 then make it a solid, else make a liquid
+	double hor_line = rectangle (x,y, center, 20, center_diameter);
+
+	coord vert_coord = {(center.x + left_middle.x)/2,0};
+	double vert_line = rectangle (x,y, vert_coord, center_diameter/3, 2 * (center.y + up_middle.y + (H/(2*s)))); 					// the | in the +
+
+	double cross = min (hor_line, vert_line); 								// this creates a cross
+
+	double upper_channel = rectangle (x,y, up_middle, 2 * (vert_coord.x - left_side.x), H/s); 				// this is the upperchannel where the flow geos through
+	double lower_channel = rectangle (x,y, bot_middle, 2 * (vert_coord.x - left_side.x), H/s); 				// this is the lowerchannel where the flow goes through
+	
+	double channels = min (upper_channel, lower_channel); 					// this combines the two channels
+
+
+	
+
+	double fuck = min (cross, channels); 									// this is the combination of the shortened channels and the cross
+	
+
+	double almost_done = min (fuck, -right_box);					// this is everything except for the triangles
+	
+	//return -almost_done;
+	coord top_triangle_coord = {vert_coord.x, up_middle.y};
+	coord bot_triangle_coord = {vert_coord.x, bot_middle.y};
+
+	double top_triangle = triangle(x,y, top_triangle_coord, (top_triangle_coord.y - center.y)/2, -1);
+	double bot_triangle = triangle(x,y, bot_triangle_coord, (top_triangle_coord.y - center.y)/2, 1);
+	
+	double triangle = min(top_triangle,bot_triangle);
+
+	return -min(almost_done, triangle);
+}
+
+
+// Define solid/nozzle shape
+static void solid_domain (scalar c, face vector cf) {
+  solid(cs, fs, geometry(x,y));
+}
+
+// Define which domain parts are liquid vs gas
+static void lq_domain (scalar c) {
+ 	
+	vertex scalar phi[];
+	face vector u[];
+	foreach_vertex () {
+    	if (x < (1 - (R/s+H/2)) && (fabs(y) < R/s/2 + 0.1)){
+				phi[]=1;
+
+		}
+		else {
+				phi[]=-1;
+				
+		}
+			// if (x < -H && fabs(y) < R)
+  		/*if (x < -H)
+    		phi[] = 1.;
+    	else
+    		phi[] = -1.;
+			*/
+  	}
+	boundary ({phi});
+  	fractions (phi, c);
+	c.refine = c.prolongation = fraction_refine;
+ 	
+}
+
+
+int main (int argc, char * argv[]) {
+  size (25*H);
+  init_grid (2 << (LEVEL - 4));
+  origin (-5*R, -(25*H/2));
+
+  rho1 = RHO1;
+  rho2 = rho1 / RHOR;
+  f.sigma = SIGMA;
+
+  const scalar c[] = theta0[0]*pi/180;
+  contact_angle = c;
+
+  TOLERANCE = 1e-4 [*];
+
+  for (j = 0; j <= 3; j++) {
+    mu1 = MUl[j];
+    mu2 = MUg[j];
+
+    run();
+  }
+
+  for (k = 1; k <= 2; k++) {
+    const scalar cc[] = theta0[k]*pi/180;
+    contact_angle = cc;
+    run();
+  }
+}
+
+event init (t = 0) {
+  mask(y > 5*H ? top: y < -5*H ? bottom : none);
+
+  // Refine interfaces until they reach the maximum level
+  astats ss;
+  int ic = 0;
+  do {
+    ic++;
+    lq_domain (f);
+    solid_domain (cs, fs);
+    ss = adapt_wavelet ({cs, f}, (double[]) {1.e-30, 1.e-30},
+		        maxlevel = LEVEL , minlevel = (1));
+  } while ((ss.nf || ss.nc) && ic < 1000);
+  refine (cs[] > 0 && cs[] < 1 && level < LEVEL);
+
+  // Reinitalize the solid and fluid/gas fields
+  lq_domain (f);
+  solid_domain (cs, fs);
+
+  // Initialize velocity
+  foreach() {
+    foreach_dimension()
+      u.x[] = 0.;
+  }
+}
+
+event logfile (i++; t <= t_end) {
+  fprintf (stderr, "%d %g %d %d\n", i, t, j, k);
+
+  char name[80];
+  sprintf (name, "%d-%d-xh2", k, j);
+  FILE * fp2 = fopen (name, "a");
+  foreach_point(-2*H, 0)
+    fprintf (fp2, "%g %g %g %g %g\n", t, x, y, f[], u.y[]);
+  fclose(fp2);
+
+  sprintf (name, "%d-%d-xh1", k, j);
+  FILE * fp1 = fopen (name, "a");
+  foreach_point(-1*H, 0)
+    fprintf (fp1, "%g %g %g %g %g\n", t, x, y, f[], u.y[]);
+  fclose(fp1);
+
+  sprintf (name, "%d-%d-xh0", k, j);
+  FILE * fp0 = fopen (name, "a");
+  foreach_point(0, 0)
+    fprintf (fp0, "%g %g %g %g %g\n", t, x, y, f[], u.y[]);
+  fclose(fp0);
+}
+
+event interface (t += 0.3125; t <= t_end) {
+  char name[80];
+  sprintf (name, "%d-%d-int-%g", k, j, t);
+  FILE * fpi = fopen(name, "w");
+  output_facets (f, fp = fpi);
+  fclose (fpi);
+}
+
+event snapshot (t == t_end) {
+  scalar omega[];
+  vorticity (u, omega);
+  foreach()
+    omega[] *= H/Ug[j];
+
+  char name[80];
+  sprintf (name, "%d-%d-vort-%g.png", k, j, t);
+  FILE * fp1 = fopen (name, "w");
+  view (fov = 7, width = 1200, height = 600);
+  clear();
+  draw_vof ("cs", "fs", filled = -1);
+  draw_vof ("f", filled = 1, fc = {1,0,0}, lw = 5);
+  squares ("omega", max = 10, min = -10, map = cool_warm);
+  save (fp = fp1);
+  fclose (fp1);
+
+  scalar umag[];
+  foreach()
+    umag[] = f[] * sqrt(sq(u.x[]) + sq(u.y[])) / Ug[j];
+
+  sprintf (name, "%d-%d-velo-%g.png", k, j, t);
+  FILE * fp3 = fopen (name, "w");
+  clear();
+  draw_vof ("cs", "fs", filled = -1);
+  draw_vof ("f");
+  squares ("umag", min = 0);
+  save (fp = fp3);
+  fclose (fp3);
+
+  sprintf (name, "%d-%d-grid-%g.png", k, j, t);
+  FILE * fp4 = fopen (name, "w");
+  clear();
+  draw_vof ("cs", "fs", filled = -1);
+  draw_vof ("f");
+  cells();
+  save (fp = fp4);
+  fclose (fp4);
+}
+
+event movie (t += 0.05; t <= t_end) {
+
+  char name[80];
+  sprintf (name, "%d-%d-%d-vof.png",k, j, num); // im taking out t so i can do fmpeg easier
+  FILE * fp1 = fopen (name, "w");
+  view (fov = 7, width = 1200, height = 1200);
+  draw_vof ("cs", "fs", filled = -1);
+  draw_vof ("f");
+  squares ("f", min = 0, max = 1);
+  save (fp = fp1);
+  fclose (fp1);
+  num++;
+}
+
+event adapt (i++) {
+  adapt_wavelet ({cs,f,u}, (double[]){1.e-15,1.e-4,uemax,uemax},
+  maxlevel = LEVEL, minlevel = LEVEL - 4);
+  }

@@ -1,0 +1,27 @@
+stream.c.tags:	\
+	/Users/ethansmith/basilisk/src/navier-stokes/stream.h \
+	/Users/ethansmith/basilisk/src/advection.h \
+	/Users/ethansmith/basilisk/src/poisson.h \
+	/Users/ethansmith/basilisk/src/run.h \
+	/Users/ethansmith/basilisk/src/timestep.h \
+	/Users/ethansmith/basilisk/src/tracer.h \
+	/Users/ethansmith/basilisk/src/bcg.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	/Users/ethansmith/basilisk/src/grid/quadtree.h \
+	/Users/ethansmith/basilisk/src/grid/tree.h \
+	/Users/ethansmith/basilisk/src/grid/mempool.h \
+	/Users/ethansmith/basilisk/src/grid/memindex/range.h \
+	/Users/ethansmith/basilisk/src/grid/foreach_cell.h \
+	/Users/ethansmith/basilisk/src/grid/neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/tree-common.h \
+	/Users/ethansmith/basilisk/src/grid/tree-mpi.h \
+	/Users/ethansmith/basilisk/src/grid/balance.h \
+	/Users/ethansmith/basilisk/src/grid/multigrid-common.h \
+	/Users/ethansmith/basilisk/src/grid/cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/events.h \
+	/Users/ethansmith/basilisk/src/grid/fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

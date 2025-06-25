@@ -1,0 +1,74 @@
+# Automatically generated using 'make Makefile.tests'
+# DO NOT EDIT, edit 'Makefile' instead
+ALLTESTS = \
+	atomisation.c \
+	breaking.c \
+	brusselator.c \
+	bubble.c \
+	distance.c \
+	gaussian-ns.c \
+	ginzburg-landau.c \
+	global-tides.c \
+	gulf-stream.c \
+	hele-shaw.c \
+	inversion.c \
+	isotropic.c \
+	karman.c \
+	lee.c \
+	life.c \
+	madsen-sv.c \
+	madsen.c \
+	master.c \
+	porous3D.c \
+	shoal-ml.c \
+	shoal.c \
+	slave.c \
+	sphere.c \
+	swasi.c \
+	tangaroa.c \
+	tides.c \
+	tohoku-gn.c \
+	tohoku-hydro.c \
+	tohoku.c \
+	tsunami.c \
+	turbulence.c \
+	wavelet.c \
+	yang.c \
+
+TESTS = \
+
+SPECIAL_TESTS = \
+
+ALLPAGES = \
+	atomisation.c.page \
+	bflux.h.page \
+	breaking.c.page \
+	brusselator.c.page \
+	bubble.c.page \
+	distance.c.page \
+	gaussian-ns.c.page \
+	ginzburg-landau.c.page \
+	global-tides.c.page \
+	gulf-stream.c.page \
+	isotropic.c.page \
+	karman.c.page \
+	lee.c.page \
+	life.c.page \
+	madsen-sv.c.page \
+	madsen.c.page \
+	master.c.page \
+	porous3D.c.page \
+	shoal-ml.c.page \
+	shoal.c.page \
+	slave.c.page \
+	sphere.c.page \
+	swasi.c.page \
+	tangaroa.c.page \
+	tohoku-gn.c.page \
+	tohoku-hydro.c.page \
+	tohoku.c.page \
+	tsunami.c.page \
+	turbulence.c.page \
+	wavelet.c.page \
+	yang.c.page \
+

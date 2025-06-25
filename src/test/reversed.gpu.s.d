@@ -1,0 +1,30 @@
+reversed.gpu.s:	\
+	/Users/ethansmith/basilisk/src/advection.h \
+	/Users/ethansmith/basilisk/src/vof.h \
+	/Users/ethansmith/basilisk/src/fractions.h \
+	/Users/ethansmith/basilisk/src/geometry.h \
+	/Users/ethansmith/basilisk/src/myc2d.h \
+	/Users/ethansmith/basilisk/src/myc.h \
+	/Users/ethansmith/basilisk/src/run.h \
+	/Users/ethansmith/basilisk/src/timestep.h \
+	/Users/ethansmith/basilisk/src/tracer.h \
+	/Users/ethansmith/basilisk/src/bcg.h \
+	/Users/ethansmith/basilisk/src/utils.h \
+	/Users/ethansmith/basilisk/src/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/output.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/multigrid.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../multigrid.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/gpu.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../multigrid-common.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/grid.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/reduction.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../cartesian-common.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../events.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../fpe.h \
+	/Users/ethansmith/basilisk/src/khash.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../foreach_cell.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../neighbors.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../multigrid-common.h \
+	/Users/ethansmith/basilisk/src/grid/gpu/../multigrid-mpi.h \
+	/Users/ethansmith/basilisk/src/common.h \
+

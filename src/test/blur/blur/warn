@@ -1,0 +1,34 @@
+/Users/ethansmith/basilisk/src/grid/cartesian-common.h:911:7: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+  int len = 0;
+      ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:381:17: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+            int i = 0, j = 0, k = 0;
+                ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:381:24: warning: variable 'j' set but not used [-Wunused-but-set-variable]
+            int i = 0, j = 0, k = 0;
+                       ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:381:31: warning: variable 'k' set but not used [-Wunused-but-set-variable]
+            int i = 0, j = 0, k = 0;
+                              ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:545:41: warning: unused variable 'off_z' [-Wunused-variable]
+    int off_x = xx + i, off_y = yy + j, off_z = zz + k;
+                                        ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:575:10: warning: unused variable 'border' [-Wunused-variable]
+    bool border = borders_boundary (point, &boundaryOffsetX, &boundaryOffsetY, &boundaryOffsetZ);
+         ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:586:9: warning: unused variable 'k' [-Wunused-variable]
+    int k = sign(imagePoint.z - imageCell.z);
+        ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:794:9: warning: unused variable 'k' [-Wunused-variable]
+    int k = sign(imagePoint.z - imageCell.z);
+        ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/ibm-gcm.h:796:37: warning: unused variable 'zz' [-Wunused-variable]
+    int xx = xOffset, yy = yOffset, zz = zOffset;
+                                    ^
+/Users/ethansmith/basilisk/src/ghost-cell-IBM/src/my-viscosity-gcm.h:46:11: warning: unused variable 'ind' [-Wunused-variable]
+    coord ind = {0,1,2};
+          ^
+blur.c:100:17: warning: unused variable 'st' [-Wunused-variable]
+    struct stat st;
+                ^
+11 warnings generated.
