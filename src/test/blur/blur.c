@@ -35,9 +35,10 @@ const double SIGMA = 1.;
 
 const double l = 50;				// * H
 const double d = R;					// * H
-const double B = R;					// * H
+const double B = R/2;					// * H
 const double L = 20.;				// * H
 const double vertical_width = H; 	// =H
+double channel_dist = d/2;
 
 const coord center = {9,0};
 
@@ -184,7 +185,6 @@ double geometry (double x, double y) {
 
 	double right_edge_full = H;
 
-	double channel_dist = d;
 
 	coord left_side = {center.x - l/2,0};
 	coord right_side = {center.x + l/2,0};
@@ -196,7 +196,7 @@ double geometry (double x, double y) {
 
 	coord nozzle_end = {left_side.x + L + vertical_width + right_edge_full, 0};
 
-	coord right_box_coord = {(right_side.x + nozzle_end.x)/2 + 5,center.y};
+	coord right_box_coord = {(right_side.x + nozzle_end.x)/2 + 5 + H,center.y};
 	double right_box = rectangle (x,y,right_box_coord, right_side.x - nozzle_end.x + 0.5 + 10, 200.5);
 
 	double hor_line = rectangle (x,y, center, 200, d);
@@ -214,9 +214,9 @@ double geometry (double x, double y) {
 	double outer_triangle_width = 3;
 
 	coord outer_top_triangle_coords[] = {
-		{nozzle_end.x - d/2 + outer_triangle_width, center.y + d/2 + outer_triangle_height - H},
-		{nozzle_end.x - d/2, 										center.y + d/2 - H},
-		{nozzle_end.x - d/2 + outer_triangle_width,										center.y + d/2 - H}
+		{nozzle_end.x - d/2 + outer_triangle_width + H, center.y + d/2 + outer_triangle_height - H},
+		{nozzle_end.x - d/2 + H, 										center.y + d/2 - H},
+		{nozzle_end.x - d/2 + outer_triangle_width + H,										center.y + d/2 - H}
 	};
 
 	coord outer_bot_triangle_coords[] = {
@@ -232,8 +232,8 @@ double geometry (double x, double y) {
 
 	coord inner_top_triangle_coords[] = {
 		{vert_coord.x - vertical_width/2 + 1/2*vertical_width, center.y + d/2 + H },//channel_position_top.y - B/2},
-		{vert_coord.x - vertical_width/2 + 1/2*vertical_width, center.y + d + 2*H + H},
-		{vert_coord.x - vertical_width/2 - channel_dist, center.y + d +2*H + H}
+		{vert_coord.x - vertical_width/2 + 1/2*vertical_width, center.y + d + H},
+		{vert_coord.x - vertical_width/2 - channel_dist, center.y + d + H}
 	};
 
 	coord inner_bot_triangle_coords[] = {
@@ -423,7 +423,7 @@ event movie (t += 0.025; t <= t_end) {
   char name[80];
   sprintf (name, "blur-%d/%d-%d-%d-vof.png", LEVEL, j, num, LEVEL); // im taking out t so i can do fmpeg easier
   FILE * fp1 = fopen (name, "w");
-  view (fov=18.9, tx=-0.188, width = 1200, height = 1200);
+  view (tx=-0.188, width = 1200, height = 1200);
   draw_vof ("ibm", "ibmf", filled = -1);
   draw_vof ("f");
   squares ("f", min = 0, max = 1);
